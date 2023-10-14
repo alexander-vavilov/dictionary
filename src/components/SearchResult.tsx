@@ -10,7 +10,7 @@ interface ISearchResultProps {
 
 const SearchResult: FC<ISearchResultProps> = ({ result, handleSearch }) => {
   return (
-    <div>
+    <div className='flex-auto'>
       <SearchResultMain result={result} />
       <div>
         <SearchResultItems result={result} handleSearch={handleSearch} />
