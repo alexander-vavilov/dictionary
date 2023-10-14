@@ -1,30 +1,29 @@
 import { FC } from 'react'
-import Heading from './Heading'
+import SearchResultItemGroup from './SearchResultItemGroup'
 
 interface ISearchResultItemSynonymsProps {
-  synonyms: string[]
+  items: string[]
   handleSearch: (query?: string) => void
 }
 
 const SearchResultItemSynonyms: FC<ISearchResultItemSynonymsProps> = ({
-  synonyms,
+  items,
   handleSearch
 }) => {
   return (
-    <div className='flex items-center gap-4 py-2'>
-      <Heading content='Synonyms' />
-      <ul className='flex gap-2'>
-        {[...new Set(synonyms)].map((synonym) => (
+    <SearchResultItemGroup name='Synonyms'>
+      <ul className='flex flex-wrap gap-2'>
+        {[...new Set(items)].map((item) => (
           <li
-            key={synonym}
-            onClick={() => handleSearch(synonym)}
-            className='cursor-pointer text-violet-500 hover:underline dark:text-violet-400'
+            key={item}
+            onClick={() => handleSearch(item)}
+            className='list-item'
           >
-            {synonym}
+            {item}
           </li>
         ))}
       </ul>
-    </div>
+    </SearchResultItemGroup>
   )
 }
 

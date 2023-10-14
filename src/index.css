@@ -8,3 +8,9 @@
 :root[data-theme='dark'] {
   color-scheme: dark;
 }
+
+@layer components {
+  .list-item {
+    @apply cursor-pointer text-violet-500 hover:underline dark:text-violet-400;
+  }
+}
