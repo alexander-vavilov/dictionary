@@ -3,17 +3,12 @@ import { ISearchResult } from '../types'
 import SearchResultMain from './SearchResultMain'
 import SearchResultItems from './SearchResultItems'
 
-interface ISearchResultProps {
-  result: ISearchResult
-  handleSearch: (query?: string) => void
-}
-
-const SearchResult: FC<ISearchResultProps> = ({ result, handleSearch }) => {
+const SearchResult: FC<{ result: ISearchResult }> = ({ result }) => {
   return (
     <div className='flex-auto'>
       <SearchResultMain result={result} />
       <div>
-        <SearchResultItems result={result} handleSearch={handleSearch} />
+        <SearchResultItems result={result} />
       </div>
     </div>
   )

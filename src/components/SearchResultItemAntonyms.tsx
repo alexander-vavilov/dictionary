@@ -1,25 +1,14 @@
 import { FC } from 'react'
 import SearchResultItemGroup from './SearchResultItemGroup'
+import { Link } from 'react-router-dom'
 
-interface ISearchResultItemAntonyms {
-  items: string[]
-  handleSearch: (query?: string) => void
-}
-
-const SearchResultItemAntonyms: FC<ISearchResultItemAntonyms> = ({
-  items,
-  handleSearch
-}) => {
+const SearchResultItemAntonyms: FC<{ items: string[] }> = ({ items }) => {
   return (
     <SearchResultItemGroup name='Antonyms'>
       <ul className='flex flex-wrap gap-2'>
         {[...new Set(items)].map((item) => (
-          <li
-            key={item}
-            onClick={() => handleSearch(item)}
-            className='list-item'
-          >
-            {item}
+          <li key={item} className='list-item'>
+            <Link to={`?query=${item}`}> {item}</Link>
           </li>
         ))}
       </ul>

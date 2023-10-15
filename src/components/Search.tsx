@@ -1,19 +1,13 @@
-import { Dispatch, FC, KeyboardEvent, SetStateAction } from 'react'
+import { FC, KeyboardEvent, useState } from 'react'
 import { MdClose, MdSearch } from 'react-icons/md'
+import { Link, useSearchParams } from 'react-router-dom'
 
-interface ISearchProps {
-  searchQuery: string
-  setSearchQuery: Dispatch<SetStateAction<string>>
-  handleSearch: (query?: string) => void
-}
+const Search: FC = () => {
+  const [searchQuery, setSearchQuery] = useState('')
+  const setSearchParams = useSearchParams()[1]
 
-const Search: FC<ISearchProps> = ({
-  searchQuery,
-  setSearchQuery,
-  handleSearch
-}) => {
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') handleSearch()
+    if (e.key === 'Enter') setSearchParams(`query=${searchQuery}`)
   }
 
   return (
@@ -31,9 +25,9 @@ const Search: FC<ISearchProps> = ({
           <MdClose />
         </button>
       )}
-      <button onClick={() => handleSearch()} className='p-2'>
+      <Link to={`?query=${searchQuery}`} className='p-2'>
         <MdSearch size={24} />
-      </button>
+      </Link>
     </div>
   )
 }

@@ -2,21 +2,9 @@ import { FC } from 'react'
 import { ISearchResult } from '../types'
 import SearchResultItem from './SearchResultItem'
 
-interface ISearchResultItemsProps {
-  result: ISearchResult
-  handleSearch: (query?: string) => void
-}
-
-const SearchResultItems: FC<ISearchResultItemsProps> = ({
-  result,
-  handleSearch
-}) => {
+const SearchResultItems: FC<{ result: ISearchResult }> = ({ result }) => {
   return result?.meanings.map((meaning) => (
-    <SearchResultItem
-      key={meaning.partOfSpeech}
-      meaning={meaning}
-      handleSearch={handleSearch}
-    />
+    <SearchResultItem key={meaning.partOfSpeech} meaning={meaning} />
   ))
 }
 
